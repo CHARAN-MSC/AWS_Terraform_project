@@ -1,3 +1,9 @@
 terraform workspace new qa
 terraform workspace new staging
 terraform workspace new development
+
+#switch between workspaces
+
+terraform workspace select qa
+terraform workspace select staging
+terraform workspace select developmen
