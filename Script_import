@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# List of resources to import
+declare -A resources=(
+  ["aws_instance.my_instance"]="i-0abcdef1234567890"
+  ["aws_s3_bucket.my_bucket"]="my-bucket-name"
+  ["aws_rds_instance.my_db"]="my-db-instance-identifier"
+  # Add more resources as needed
+)
+
+# Loop through resources and import them
+for resource in "${!resources[@]}"; do
+  terraform import $resource ${resources[$resource]}
+done
+
+echo "All resources imported successfully!"
