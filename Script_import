@@ -14,3 +14,23 @@ for resource in "${!resources[@]}"; do
 done
 
 echo "All resources imported successfully!"
+
+
+
+#python
+import subprocess
+
+# File containing resources to import (format: resource_name resource_id)
+resource_file = 'resources.txt'
+
+def import_resources(file):
+    with open(file, 'r') as f:
+        for line in f:
+            resource_name, resource_id = line.strip().split()
+            command = f'terraform import {resource_name} {resource_id}'
+            subprocess.run(command, shell=True)
+            print(f'Imported {resource_name} with ID {resource_id}')
+
+if __name__ == '__main__':
+    import_resources(resource_file)
+
